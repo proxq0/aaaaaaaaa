@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>larping.town</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+      font-family: 'Source Code Pro', monospace;
+      color: white;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .slanted-lines::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: 0;
+      left: 0;
+      background-image: repeating-linear-gradient(
+        135deg,
+        rgba(150,150,150,0.04),
+        rgba(150,150,150,0.04) 2px,
+        transparent 2px,
+        transparent 40px
+      );
+      z-index: -1;
+      transform: rotate(0deg);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 40px 10px;
+      position: relative;
+    }
+
+    .title {
+      font-size: 2.4em;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-buttons button {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 1em;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-buttons button:hover {
+      background: white;
+      color: black;
+    }
+
+    .divider {
+      width: 100%;
+      height: 2px;
+      background: white;
+      margin: 10px 0 30px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100% - 120px);
+      gap: 30px;
+      position: relative;
+    }
+
+    .card {
+      width: 200px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 15px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .card.moc {
+      box-shadow: 0 0 15px red;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .card-title {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .filler {
+      width: 100%;
+      height: 100px;
+      background: white;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    .filler.red {
+      background: red;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .buttons button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.8em;
+      cursor: pointer;
+      color: #000;
+      background: white;
+      box-shadow: 0 0 8px white;
+      transition: transform 0.2s ease;
+    }
+
+    .card.moc .buttons button {
+      background: red;
+      color: white;
+      box-shadow: 0 0 8px red;
+    }
+
+    .buttons button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="slanted-lines"></div>
+  <div id="particles-js"></div>
+
+  <div class="top-bar">
+    <div class="title">larping.town</div>
+    <div class="nav-buttons">
+      <button>Home</button>
+      <button>Dashboard</button>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-title">ATP</div>
+      <div class="filler"></div>
+      <div class="buttons">
+        <button>Join</button>
+        <button>Bio</button>
+      </div>
+    </div>
+
+    <div class="card moc">
+      <div class="card-title" style="color: red;">MOC</div>
+      <div class="filler red"></div>
+      <div class="buttons">
+        <button>Join</button>
+        <button>Bio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Embedded particles.js so it works locally -->
+  <script>
+    // Minimal particles.js loader
+    !function(p,e){var t="particles-js",n="particles-js-canvas-el",i="undefined"!=typeof module;function a(e){return p["particlesJS-"+e]}i?module.exports=a:p.particlesJS=a;var o=p.pJSDom=[];function r(e,t){var n=document.createElement("canvas");n.className=n.id=n=t.id,n.width=t.width,n.height=t.height,e.appendChild(n)}p.particlesJS=function(e,t){var i=document.getElementById(e),a=t.canvas||{},r=a.el||n,s=a.width||i.offsetWidth,l=a.height||i.offsetHeight;if(!i)throw new Error("No DOM element with ID '"+e+"' found.");r=r.replace("#",""),s=parseInt(s,10),l=parseInt(l,10),i.innerHTML="",r=document.createElement("canvas"),r.className="particles-js-canvas-el",r.style.width="100%",r.style.height="100%",r.width=s,r.height=l,i.appendChild(r);var c=p.particlesJS.load(e,t)};p.particlesJS.load=function(e,n){var i=document.getElementById(e),a=document.querySelector("#"+e+" > .particles-js-canvas-el");if(!i||!a)throw new Error("particles.js: canvas element not found");return particlesJS(e,n)};} (window);
+  </script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80 },
+        color: { value: "#ff0000" },
+        shape: { type: "circle" },
+        opacity: { value: 0.4 },
+        size: { value: 2, random: true },
+        line_linked: {
+          enable: true,
+          distance: 140,
+          color: "#ff0000",
+          opacity: 0.5,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 1 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>
